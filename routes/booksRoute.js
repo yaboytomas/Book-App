@@ -9,7 +9,7 @@ const checkRoleMiddleware = require("../middleware/checkRoleMiddleware");
 router.get("/", verifyToken, booksController.getBooks);
 router.post("/", verifyToken, booksController.createBook);
 router.put("/:id", verifyToken, booksController.updateBook);
-router.delete("/:id", verifyToken, checkRoleMiddleware("admin"), booksController.deleteBook);
+router.delete("/:id", verifyToken, booksController.deleteBook); // Removed admin requirement
 router.post("/upload", verifyToken, upload.single('cover'), booksController.uploadCover);
 
 // Export the router

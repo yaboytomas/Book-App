@@ -6,15 +6,29 @@ const bookSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    cover: {
-        type: String,
-        required: false
-    },
     author: {
         type: String,
         required: true
+    },
+    genre: {
+        type: String,
+        required: false
+    },
+    publishedYear: {
+        type: Number,
+        required: false
+    },
+    description: {
+        type: String,
+        required: false
+    },
+    cover: {
+        type: String,
+        required: false
     }
-})  
+}, {
+    timestamps: true // Adds createdAt and updatedAt
+})
 
 // Export the model 
 module.exports = mongoose.model("Book", bookSchema);    
