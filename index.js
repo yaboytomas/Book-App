@@ -12,7 +12,12 @@ const authRoutes = require("./routes/authRoutes");
 
 
 // Middleware
-app.use(cors()); // Enable CORS for all routes
+app.use(cors({
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://book-app.up.railway.app', 'https://your-frontend-domain.com'] 
+    : true,
+  credentials: true
+})); // Enable CORS for all routes
 app.use(express.json()); // Parse JSON bodies
 
 // Error handling middleware
